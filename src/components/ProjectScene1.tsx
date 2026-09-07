@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, ShieldCheck, Scan } from 'lucide-react';
-import { ProjectData } from '../types';
-import { audioEngine } from './AudioEngine';
-import { PORTFOLIO_DATA } from '../data';
+import React, { useRef, useState, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUpRight, ShieldCheck, Scan } from "lucide-react";
+import { ProjectData } from "../types";
+import { audioEngine } from "./AudioEngine";
+import { PORTFOLIO_DATA } from "../data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,10 @@ interface ProjectScene1Props {
 
 export const project1Data: ProjectData = PORTFOLIO_DATA.projects[0];
 
-export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCursorMode }) => {
+export const ProjectScene1: React.FC<ProjectScene1Props> = ({
+  onOpenModal,
+  setCursorMode,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const [wireframeMode, setWireframeMode] = useState(false);
@@ -34,14 +37,14 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
           scale: 1,
           opacity: 1,
           y: 0,
-          ease: 'power2.out',
+          ease: "power2.out",
           scrollTrigger: {
             trigger: container,
-            start: 'top 75%',
-            end: 'top 20%',
+            start: "top 75%",
+            end: "top 20%",
             scrub: 1,
           },
-        }
+        },
       );
     }, container);
 
@@ -57,7 +60,7 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
 
   const handleMouseLeave = () => {
     setTilt({ x: 0, y: 0 });
-    setCursorMode('default');
+    setCursorMode("default");
   };
 
   return (
@@ -67,22 +70,22 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
       className="relative w-full min-h-[140vh] py-24 px-6 sm:px-12 md:px-16 flex flex-col justify-between border-t border-[#C8C4B9] bg-transparent"
     >
       {/* Top Section Header */}
-      <div className="flex items-baseline justify-between border-b border-[#C8C4B9] pb-4 mb-12">
-        <div className="flex items-baseline gap-4">
-          <span className="font-display text-5xl sm:text-7xl md:text-8xl font-black text-[#111111] leading-none">
+      <div className="section-header-row flex flex-col sm:flex-row items-start sm:items-baseline justify-between border-b border-[#C8C4B9] pb-3 sm:pb-4 mb-8 sm:mb-12 gap-3 sm:gap-0">
+        <div className="flex items-baseline gap-2 sm:gap-4">
+          <span className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-[#111111] leading-none">
             01
           </span>
           <div className="flex flex-col">
-            <span className="font-mono-tech text-[10px] sm:text-xs text-[#355CFF] tracking-widest uppercase font-bold">
+            <span className="font-mono-tech text-[9px] sm:text-[10px] md:text-xs text-[#355CFF] tracking-widest uppercase font-bold">
               {project1Data.category}
             </span>
-            <span className="font-display text-xl sm:text-3xl font-bold tracking-tight text-[#111111] uppercase">
+            <span className="font-display text-lg sm:text-xl md:text-3xl font-bold tracking-tight text-[#111111] uppercase">
               {project1Data.title}
             </span>
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-6 font-mono-tech text-xs text-[#66645F] tracking-widest uppercase">
+        <div className="hidden lg:flex items-center gap-4 sm:gap-6 font-mono-tech text-xs text-[#66645F] tracking-widest uppercase">
           <span>STATUS: BUILT</span>
           <span className="text-[#C8C4B9]">|</span>
           <span>PLATFORM: ANDROID ACCESSIBILITY</span>
@@ -95,7 +98,7 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
         ref={visualRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => setCursorMode('view', 'INSPECT')}
+        onMouseEnter={() => setCursorMode("view", "INSPECT")}
         onClick={() => {
           audioEngine.playClick(1000);
           onOpenModal(project1Data);
@@ -113,15 +116,46 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="grid-dots-p1" width="30" height="30" patternUnits="userSpaceOnUse">
+              <pattern
+                id="grid-dots-p1"
+                width="30"
+                height="30"
+                patternUnits="userSpaceOnUse"
+              >
                 <circle cx="2" cy="2" r="1" fill="#111111" fillOpacity="0.18" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-dots-p1)" />
             {/* Concentric Scanner Circles */}
-            <circle cx="50%" cy="50%" r="140" stroke="#111111" strokeWidth="0.75" strokeDasharray="4 4" fill="none" opacity="0.4" />
-            <circle cx="50%" cy="50%" r="220" stroke="#355CFF" strokeWidth="0.75" strokeDasharray="8 4" fill="none" opacity="0.3" />
-            <circle cx="50%" cy="50%" r="300" stroke="#111111" strokeWidth="0.5" fill="none" opacity="0.2" />
+            <circle
+              cx="50%"
+              cy="50%"
+              r="140"
+              stroke="#111111"
+              strokeWidth="0.75"
+              strokeDasharray="4 4"
+              fill="none"
+              opacity="0.4"
+            />
+            <circle
+              cx="50%"
+              cy="50%"
+              r="220"
+              stroke="#355CFF"
+              strokeWidth="0.75"
+              strokeDasharray="8 4"
+              fill="none"
+              opacity="0.3"
+            />
+            <circle
+              cx="50%"
+              cy="50%"
+              r="300"
+              stroke="#111111"
+              strokeWidth="0.5"
+              fill="none"
+              opacity="0.2"
+            />
           </svg>
         </div>
 
@@ -136,7 +170,7 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
                 width="240"
                 height="380"
                 rx="20"
-                fill={wireframeMode ? 'none' : '#EAE6DC'}
+                fill={wireframeMode ? "none" : "#EAE6DC"}
                 stroke="#111111"
                 strokeWidth="2"
               />
@@ -145,31 +179,113 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
                 y="50"
                 width="208"
                 height="340"
-                fill={wireframeMode ? 'none' : '#1A1A1A'}
+                fill={wireframeMode ? "none" : "#1A1A1A"}
                 stroke="#111111"
                 strokeWidth="1.5"
               />
 
               {/* Top Sensor Notch */}
-              <rect x="130" y="38" width="60" height="5" rx="2.5" fill="#111111" />
+              <rect
+                x="130"
+                y="38"
+                width="60"
+                height="5"
+                rx="2.5"
+                fill="#111111"
+              />
 
               {/* QR Code / OCR Target Grid */}
-              <rect x="80" y="80" width="160" height="160" fill="none" stroke="#355CFF" strokeWidth="1.5" strokeDasharray="6 4" />
-              <rect x="95" y="95" width="40" height="40" fill={wireframeMode ? 'none' : '#355CFF'} opacity="0.85" />
-              <rect x="185" y="95" width="40" height="40" fill={wireframeMode ? 'none' : '#355CFF'} opacity="0.85" />
-              <rect x="95" y="185" width="40" height="40" fill={wireframeMode ? 'none' : '#355CFF'} opacity="0.85" />
+              <rect
+                x="80"
+                y="80"
+                width="160"
+                height="160"
+                fill="none"
+                stroke="#355CFF"
+                strokeWidth="1.5"
+                strokeDasharray="6 4"
+              />
+              <rect
+                x="95"
+                y="95"
+                width="40"
+                height="40"
+                fill={wireframeMode ? "none" : "#355CFF"}
+                opacity="0.85"
+              />
+              <rect
+                x="185"
+                y="95"
+                width="40"
+                height="40"
+                fill={wireframeMode ? "none" : "#355CFF"}
+                opacity="0.85"
+              />
+              <rect
+                x="95"
+                y="185"
+                width="40"
+                height="40"
+                fill={wireframeMode ? "none" : "#355CFF"}
+                opacity="0.85"
+              />
 
               {/* Scanning Laser Horizon */}
-              <line x1="75" y1="160" x2="245" y2="160" stroke="#355CFF" strokeWidth="2" />
+              <line
+                x1="75"
+                y1="160"
+                x2="245"
+                y2="160"
+                stroke="#355CFF"
+                strokeWidth="2"
+              />
               <circle cx="160" cy="160" r="4" fill="#355CFF" />
 
               {/* OCR Detection Callout Card */}
-              <rect x="75" y="260" width="170" height="110" fill={wireframeMode ? 'none' : '#222222'} stroke="#355CFF" strokeWidth="1" />
-              <line x1="90" y1="285" x2="210" y2="285" stroke="#EAE6DC" strokeWidth="2" opacity="0.9" />
-              <line x1="90" y1="305" x2="180" y2="305" stroke="#EAE6DC" strokeWidth="1.5" opacity="0.7" />
-              <line x1="90" y1="325" x2="150" y2="325" stroke="#355CFF" strokeWidth="2" />
+              <rect
+                x="75"
+                y="260"
+                width="170"
+                height="110"
+                fill={wireframeMode ? "none" : "#222222"}
+                stroke="#355CFF"
+                strokeWidth="1"
+              />
+              <line
+                x1="90"
+                y1="285"
+                x2="210"
+                y2="285"
+                stroke="#EAE6DC"
+                strokeWidth="2"
+                opacity="0.9"
+              />
+              <line
+                x1="90"
+                y1="305"
+                x2="180"
+                y2="305"
+                stroke="#EAE6DC"
+                strokeWidth="1.5"
+                opacity="0.7"
+              />
+              <line
+                x1="90"
+                y1="325"
+                x2="150"
+                y2="325"
+                stroke="#355CFF"
+                strokeWidth="2"
+              />
 
-              <text x="90" y="350" fill="#355CFF" fontSize="9" fontFamily="monospace" fontWeight="bold">
+              <text
+                x="90"
+                y="350"
+                fill="#355CFF"
+                fontSize="9"
+                fontFamily="monospace"
+                fontWeight="bold"
+              >
                 [HEURISTIC SAFEGUARD: ACTIVE]
               </text>
             </svg>
@@ -193,11 +309,13 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
               audioEngine.playClick(1300);
               setWireframeMode(!wireframeMode);
             }}
-            onMouseEnter={() => setCursorMode('view', wireframeMode ? 'SOLID' : 'WIREFRAME')}
-            onMouseLeave={() => setCursorMode('view', 'INSPECT')}
+            onMouseEnter={() =>
+              setCursorMode("view", wireframeMode ? "SOLID" : "WIREFRAME")
+            }
+            onMouseLeave={() => setCursorMode("view", "INSPECT")}
             className="px-3 py-1 bg-[#111111] text-[#EAE6DC] hover:bg-[#355CFF] transition-colors"
           >
-            {wireframeMode ? 'SCHEMATIC: WIREFRAME' : 'SCHEMATIC: COMPOSITE'}
+            {wireframeMode ? "SCHEMATIC: WIREFRAME" : "SCHEMATIC: COMPOSITE"}
           </button>
         </div>
 
@@ -205,7 +323,9 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
         <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between font-mono-tech text-[10px] text-[#66645F] pointer-events-none">
           <div className="flex items-center gap-2">
             <Scan className="w-3.5 h-3.5 text-[#355CFF]" />
-            <span className="text-[#111111] font-bold">THREAT ENGINE · OCR · RISK ANALYSIS · REAL-TIME</span>
+            <span className="text-[#111111] font-bold">
+              THREAT ENGINE · OCR · RISK ANALYSIS · REAL-TIME
+            </span>
           </div>
           <div className="text-[#111111] font-semibold bg-[#EAE6DC]/90 px-3 py-1 border border-[#C8C4B9]">
             CLICK TO OPEN FULL DOSSIER ↗
@@ -214,24 +334,38 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
       </div>
 
       {/* Metadata Strip & Prominent VIEW PROJECT Trigger */}
-      <div className="mt-12 pt-8 border-t border-[#C8C4B9] flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+      <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#C8C4B9] flex flex-col lg:flex-row lg:items-center justify-between gap-6 sm:gap-8">
         {/* Project Metadata Table */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono-tech text-xs">
+        <div className="meta-grid grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 font-mono-tech text-[11px] sm:text-xs">
           <div>
-            <span className="text-[#66645F] block text-[10px] uppercase">ROLE</span>
-            <span className="font-bold text-[#111111]">{project1Data.role}</span>
+            <span className="text-[#66645F] block text-[9px] sm:text-[10px] uppercase mb-0.5">
+              ROLE
+            </span>
+            <span className="font-bold text-[#111111]">
+              {project1Data.role}
+            </span>
           </div>
           <div>
-            <span className="text-[#66645F] block text-[10px] uppercase">STATUS</span>
+            <span className="text-[#66645F] block text-[9px] sm:text-[10px] uppercase mb-0.5">
+              STATUS
+            </span>
             <span className="font-bold text-emerald-600">BUILT</span>
           </div>
           <div>
-            <span className="text-[#66645F] block text-[10px] uppercase">STACK</span>
-            <span className="font-bold text-[#111111]">{project1Data.stack.join(' · ')}</span>
+            <span className="text-[#66645F] block text-[9px] sm:text-[10px] uppercase mb-0.5">
+              STACK
+            </span>
+            <span className="font-bold text-[#111111]">
+              {project1Data.stack.join(" · ")}
+            </span>
           </div>
           <div>
-            <span className="text-[#66645F] block text-[10px] uppercase">CATEGORY</span>
-            <span className="font-bold text-[#355CFF]">{project1Data.category}</span>
+            <span className="text-[#66645F] block text-[9px] sm:text-[10px] uppercase mb-0.5">
+              CATEGORY
+            </span>
+            <span className="font-bold text-[#355CFF]">
+              {project1Data.category}
+            </span>
           </div>
         </div>
 
@@ -242,19 +376,21 @@ export const ProjectScene1: React.FC<ProjectScene1Props> = ({ onOpenModal, setCu
             audioEngine.playClick(1100);
             onOpenModal(project1Data);
           }}
-          onMouseEnter={() => setCursorMode('open', 'DOSSIER')}
-          onMouseLeave={() => setCursorMode('default')}
-          className="group self-start lg:self-auto flex items-center gap-4 px-8 py-4 bg-[#111111] text-[#EAE6DC] font-display text-base sm:text-lg font-bold tracking-tight uppercase hover:bg-[#355CFF] transition-all duration-300"
+          onMouseEnter={() => setCursorMode("open", "DOSSIER")}
+          onMouseLeave={() => setCursorMode("default")}
+          className="group self-stretch sm:self-start lg:self-auto flex items-center justify-center sm:justify-start gap-3 sm:gap-4 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#111111] text-[#EAE6DC] font-display text-sm sm:text-base lg:text-lg font-bold tracking-tight uppercase hover:bg-[#355CFF] transition-all duration-300 w-full sm:w-auto"
         >
           <span>VIEW PROJECT SPECIFICATION</span>
-          <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" />
         </button>
       </div>
 
       {/* Transition indicator to Scene 02 */}
-      <div className="mt-16 pt-4 border-t border-dashed border-[#C8C4B9] flex items-center justify-between font-mono-tech text-[10px] text-[#66645F] uppercase">
+      <div className="mt-10 sm:mt-16 pt-3 sm:pt-4 border-t border-dashed border-[#C8C4B9] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 font-mono-tech text-[9px] sm:text-[10px] text-[#66645F] uppercase">
         <span>TRANSITIONING TO SCENE 02 // SARO MULTIMODAL SYSTEM</span>
-        <span className="text-[#355CFF]">↓ SCROLL DOWN TO ENTER LOCAL AI CHAMBER</span>
+        <span className="text-[#355CFF]">
+          ↓ SCROLL DOWN TO ENTER LOCAL AI CHAMBER
+        </span>
       </div>
     </section>
   );

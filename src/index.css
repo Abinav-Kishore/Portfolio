@@ -2,17 +2,23 @@
 
 @layer base {
   :root {
-    --bg-paper: #EAE6DC;
+    --bg-paper: #eae6dc;
     --color-ink: #111111;
-    --color-secondary: #66645F;
-    --color-grid: #C8C4B9;
-    --color-accent: #355CFF;
+    --color-secondary: #66645f;
+    --color-grid: #c8c4b9;
+    --color-accent: #355cff;
   }
 
   html {
-    background-color: #EAE6DC;
+    background-color: #eae6dc;
     color: #111111;
-    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Instrument Sans",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,7 +26,7 @@
   }
 
   body {
-    background-color: #EAE6DC;
+    background-color: #eae6dc;
     color: #111111;
     margin: 0;
     padding: 0;
@@ -29,52 +35,115 @@
   }
 
   ::selection {
-    background-color: #355CFF;
-    color: #EAE6DC;
+    background-color: #355cff;
+    color: #eae6dc;
   }
 }
 
 /* Typography tokens */
 .font-display {
-  font-family: 'Syne', 'Space Grotesk', sans-serif;
+  font-family: "Syne", "Space Grotesk", sans-serif;
   letter-spacing: -0.04em;
 }
 
 .font-mono-tech {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   letter-spacing: -0.01em;
 }
 
 .font-editorial {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
 }
 
-/* Huge Headline helper */
+/* Huge Headline helper — sized to fit the pinned hero viewport */
 .hero-headline {
-  font-size: clamp(3.8rem, 10.5vw, 120px);
-  line-height: 0.85;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.25rem, 7vw, 96px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
   font-weight: 900;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .hero-headline {
+    font-size: clamp(3rem, 7vw, 96px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* Companion line for long headline strings — stays on a single line */
+.hero-headline-sub {
+  font-size: clamp(1.35rem, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Entrance animation for dynamic list rows */
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row-in {
+  animation: rowIn 0.45s ease both;
+}
+
+/* Scanning sweep line for detection-style visuals */
+@keyframes scanSweep {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: calc(100% - 1.5rem);
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.scanline {
+  animation: scanSweep 3.2s ease-in-out infinite;
 }
 
 .sub-headline {
-  font-size: clamp(2.5rem, 7vw, 7.5rem);
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  font-size: clamp(2rem, 6vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
   font-weight: 800;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .sub-headline {
+    font-size: clamp(2.5rem, 7vw, 7.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
 }
 
 /* Editorial Linear-Gradient Grid Pattern */
 .architectural-grid {
   background-size: 60px 60px;
-  background-image: 
-    linear-gradient(#C8C4B9 0.5px, transparent 0.5px),
-    linear-gradient(90deg, #C8C4B9 0.5px, transparent 0.5px);
+  background-image:
+    linear-gradient(#c8c4b9 0.5px, transparent 0.5px),
+    linear-gradient(90deg, #c8c4b9 0.5px, transparent 0.5px);
 }
 
 .architectural-grid-dark {
   background-size: 60px 60px;
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0.5px, transparent 0.5px);
 }
@@ -82,7 +151,7 @@
 /* Editorial Framing & Corner Accents */
 .editorial-box {
   position: relative;
-  border: 1px solid #C8C4B9;
+  border: 1px solid #c8c4b9;
   background-color: rgba(234, 230, 220, 0.6);
   backdrop-filter: blur(4px);
 }
@@ -110,7 +179,8 @@
 }
 
 /* Lenis smooth scrolling rules */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -149,4 +219,97 @@ html.lenis, html.lenis body {
 .border-hairline-dark {
   border-width: 1px;
   border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive section padding */
+@media (max-width: 639px) {
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Mobile text alignment helpers */
+@media (max-width: 639px) {
+  .hero-text-wrapper {
+    text-align: left;
+  }
+}
+
+/* Prevent text overflow in cards */
+.text-clamp-auto {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Better touch targets for mobile - apply to CTA buttons only */
+@media (max-width: 768px) {
+  /* Ensure major CTA buttons have adequate touch area */
+  .cta-button,
+  button[id^="p1-view-btn"],
+  button[id^="p2-view-btn"],
+  button[id^="p3-view-btn"],
+  button[id^="close-modal-btn"],
+  button[id^="close-index-btn"] {
+    min-height: 48px;
+  }
+
+  /* Links in contact actions grid */
+  #contact a {
+    min-height: 48px;
+  }
+
+  /* Nav buttons touch area */
+  #nav-logo-btn,
+  #nav-index-toggle,
+  #nav-audio-toggle {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* Mobile-specific: make section headers wrap better */
+@media (max-width: 639px) {
+  .section-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* Ensure monospace technical text doesn't overflow */
+.font-mono-tech {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Better spacing for mobile project metadata grids */
+@media (max-width: 639px) {
+  .meta-grid > div {
+    min-width: 50%;
+  }
+}
+
+/* Custom Scrollbar for Modal */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c8c4b9;
+  border-radius: 0px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #355cff;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c8c4b9 transparent;
 }

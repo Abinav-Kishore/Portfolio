@@ -48,7 +48,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       {/* Fixed top navigation bar adhering to Editorial Aesthetic */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-6 sm:px-12 md:px-16 py-7 pointer-events-none select-none transition-colors duration-500">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-4 sm:px-8 md:px-12 lg:px-16 py-5 sm:py-7 pointer-events-none select-none transition-colors duration-500">
         {/* Top Left: NAME / COORDINATES */}
         <div className="pointer-events-auto flex flex-col items-start">
           <button
@@ -58,17 +58,17 @@ export const Navigation: React.FC<NavigationProps> = ({
             onMouseLeave={() => setCursorMode('default')}
             className={`group text-left transition-opacity duration-300 hover:opacity-75`}
           >
-            <span className={`block text-[10px] font-bold tracking-[0.2em] mb-1 uppercase ${textColor}`}>
+            <span className={`block text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] mb-0.5 sm:mb-1 uppercase ${textColor}`}>
               ABINAV KISHORE
             </span>
-            <span className="block text-[10px] opacity-50 font-mono tracking-tighter text-[#66645F]">
+            <span className="block text-[9px] sm:text-[10px] opacity-50 font-mono tracking-tighter text-[#66645F]">
               {PORTFOLIO_DATA.identity.coordinates} // CHENNAI
             </span>
           </button>
         </div>
 
         {/* Top Right: AUDIO & EDITORIAL INDEX */}
-        <div className="pointer-events-auto flex items-center gap-6">
+        <div className="pointer-events-auto flex items-center gap-3 sm:gap-6">
           {/* Sound Synthesizer toggle */}
           <button
             id="nav-audio-toggle"
@@ -102,6 +102,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {isOpen && (
         <div
           id="index-overlay"
+          data-lenis-prevent
           className="fixed inset-0 z-[100] bg-[#111111] text-[#EAE6DC] flex flex-col justify-between p-6 sm:p-12 md:p-16 overflow-y-auto"
         >
           {/* Top Bar inside Overlay */}
@@ -126,7 +127,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             {[
               { id: 'work', num: '01', label: 'WORK', note: 'VIORA · SARO · OBLIQ' },
               { id: 'about', num: '02', label: 'ABOUT', note: 'PHILOSOPHY, SPECIFICATION & BIOGRAPHY' },
-              { id: 'experiments', num: '03', label: 'EXPERIMENTS', note: '7 ACTIVE LABORATORY BUILDS' },
+              { id: 'experiments', num: '03', label: 'EXPERIMENTS', note: `${PORTFOLIO_DATA.experiments.length} ACTIVE LABORATORY BUILDS` },
               { id: 'experience', num: '04', label: 'EXPERIENCE', note: 'INDUSTRY INTERNSHIPS & EDUCATION' },
               { id: 'contact', num: '05', label: 'CONTACT', note: 'TRANSMISSION & COLLABORATION' },
             ].map((item) => (

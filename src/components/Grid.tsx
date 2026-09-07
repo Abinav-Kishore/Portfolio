@@ -105,17 +105,17 @@ export const Grid: React.FC<GridProps> = ({ dark = false }) => {
 
       {/* Corner Registration Marks & Technical Telemetry */}
       <div
-        className="absolute top-24 left-8 sm:left-12 font-mono-tech text-[9px] tracking-widest uppercase transition-colors duration-500"
+        className="absolute bottom-24 left-8 sm:left-12 font-mono-tech text-[9px] tracking-widest uppercase transition-colors duration-500 z-10"
         style={{ color: textColor }}
       >
-        <span>45.5231° N, 122.6765° W</span>
+        <span>13.0827° N, 80.2707° E</span>
       </div>
 
       <div
-        className="absolute bottom-10 right-8 sm:right-12 font-mono-tech text-[9px] tracking-widest uppercase transition-colors duration-500"
+        className="absolute bottom-10 left-8 sm:left-12 font-mono-tech text-[9px] tracking-widest uppercase transition-colors duration-500 z-10"
         style={{ color: textColor }}
       >
-        <span>REF: PORTFOLIO_V6 // TS: 2026.04.12</span>
+        <span>REF: PORTFOLIO_V6 // TS: 2026.09.07</span>
       </div>
 
       {/* Crosshair registration marks in corners */}

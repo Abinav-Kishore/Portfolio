@@ -77,6 +77,31 @@ export const PORTFOLIO_DATA = {
         { label: 'OCR LATENCY', value: '<45ms' },
         { label: 'RISK ANALYSIS', value: 'REAL-TIME' },
       ],
+      pipeline: [
+        {
+          stage: 'CAPTURE',
+          detail:
+            'An Android accessibility service streams on-screen content while an OCR pass extracts text from QR frames, links and messages.',
+          status: 'REAL-TIME',
+        },
+        {
+          stage: 'DETECT',
+          detail:
+            'The heuristic engine scores QR payloads, URLs and message patterns for adversarial intent before the user interacts with them.',
+          status: 'ON-DEVICE',
+        },
+        {
+          stage: 'ALERT',
+          detail:
+            'Risk verdicts surface as non-intrusive warnings; suspicious content is flagged before it can be opened or scanned.',
+          status: '<45MS',
+        },
+      ],
+      notes: [
+        'Runs entirely on-device — no screen content ever leaves the handset.',
+        'OCR latency budget held under 45ms per frame on mid-range hardware.',
+        'Active build; currently iterating on link-reputation heuristics.',
+      ],
       dark: false,
     },
     {
@@ -95,6 +120,31 @@ export const PORTFOLIO_DATA = {
         { label: 'LOCAL MODEL', value: 'EDGE EMBED' },
         { label: 'VISION ENGINE', value: 'ZERO-CLOUD' },
         { label: 'DEVICE CONTROL', value: 'HARDWARE BUS' },
+      ],
+      pipeline: [
+        {
+          stage: 'SENSE',
+          detail:
+            'Voice stream and camera feed are captured locally from onboard sensors — dual-modality input with no network round-trip.',
+          status: 'DUAL-STREAM',
+        },
+        {
+          stage: 'REASON',
+          detail:
+            'A local LLM resolves spoken intent while on-device CV models ground it in what the camera sees — all inference at the edge.',
+          status: 'ZERO-CLOUD',
+        },
+        {
+          stage: 'ACTUATE',
+          detail:
+            'Resolved commands are mapped onto the hardware bus; device state updates hands-free with no touch interaction required.',
+          status: 'HARDWARE BUS',
+        },
+      ],
+      notes: [
+        'Best Fresher Team at Nexathon25 (VIT).',
+        'All inference executes on-device; zero data egress by design.',
+        'Accessibility-first: built for hands-free operation.',
       ],
       dark: true,
     },
@@ -115,6 +165,31 @@ export const PORTFOLIO_DATA = {
         { label: 'VECTOR RETRIEVAL', value: 'QDRANT' },
         { label: 'RISK SCORING', value: 'AUTOMATED' },
       ],
+      pipeline: [
+        {
+          stage: 'INGEST',
+          detail:
+            'Contracts parsed multi-modally; a hierarchical segmenter splits the document into a graph of clauses and obligations.',
+          status: 'FASTAPI',
+        },
+        {
+          stage: 'RETRIEVE',
+          detail:
+            'Clause embeddings are indexed in Qdrant for semantic retrieval; Redis caches hot analyses; PostgreSQL persists the record.',
+          status: 'QDRANT + REDIS',
+        },
+        {
+          stage: 'REASON',
+          detail:
+            'Gemini scores obligations, surfaces hidden liabilities and drafts the executive audit with clause-level citations.',
+          status: '1M CONTEXT',
+        },
+      ],
+      notes: [
+        'Qdrant vector retrieval over a 12,400-token-per-contract corpus.',
+        'Whole-contract reasoning via the 1M-token context window.',
+        'Automated risk scoring with citations back to the source clause.',
+      ],
       dark: false,
     },
   ] as ProjectData[],
@@ -133,32 +208,32 @@ export const PORTFOLIO_DATA = {
     {
       id: 'value',
       number: '02',
-      title: 'VALUE (VALUATION ENGINE)',
-      category: 'Financial Analytics & Market NLP Web App',
-      tags: ['Python', 'JavaScript', 'APIs', 'NLP', 'React'],
-      date: '2025',
+      title: 'VANTIQ // EXPLAINABLE STOCK INTELLIGENCE',
+      category: 'Multi-Agent Financial Intelligence Platform',
+      tags: ['TypeScript', 'React', 'Yahoo Finance', 'Finnhub', 'RAG', 'Multi-Agent LLMs'],
+      date: '2026',
       description:
-        'Developed a platform integrating real-time financial market data with live sentiment analysis for portfolio optimization and adaptive market signal analytics.',
+        'Explainable stock research platform: three specialist agents (TECH-SPIDER technicals, FUND-SPIDER RAG fundamentals, SENTI-SPIDER news sentiment) run in parallel on real market data, converge through a NEXUS synthesis layer, and adapt to the investor risk profile — with the full reasoning trace exposed.',
     },
     {
       id: 'ai-email-response-agent',
       number: '03',
-      title: 'AI EMAIL RESPONSE AGENT',
-      category: 'Agentic Email Automation Platform',
-      tags: ['Python', 'Node.js', 'Express.js', 'LLMs', 'RAG', 'Email APIs'],
+      title: 'AI EMAIL REPLY DRAFTER',
+      category: 'Agentic Gmail Automation',
+      tags: ['Node.js', 'Gmail API', 'OAuth 2.0', 'Hugging Face', 'Llama 3.3 8B'],
       date: '2026',
       description:
-        'Context-aware agentic email platform synthesizing intelligent replies via thread retrieval and LLM reasoning with backend RAG pipelines.',
+        'AI agent that drafts replies for unread Gmail threads using an open LLM (Llama-3.3-8B-Instruct via Hugging Face), with Google OAuth integration, Gmail draft creation or auto-send, and a CLI that drafts from raw email files with selectable tone.',
     },
     {
       id: 'plexus',
       number: '04',
       title: 'PLEXUS',
-      category: 'Student Dashboard Web & Mobile Platform',
-      tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'RBAC'],
+      category: 'Cross-Platform Student Dashboard',
+      tags: ['React Native', 'Expo', 'TypeScript', 'REST APIs', 'RBAC'],
       date: '2024',
       description:
-        'Built a centralized platform to manage academic resources, announcements, and administrative workflows with role-based access control for students and administrators.',
+        'Centralized student platform for academic resources, announcements and administrative workflows with role-based access control, built cross-platform with React Native (Expo).',
     },
     {
       id: 'leetcode-engine',
@@ -173,12 +248,12 @@ export const PORTFOLIO_DATA = {
     {
       id: 'deepfake-detection',
       number: '06',
-      title: 'DEEPFAKE DETECTION FORENSICS',
+      title: 'DEEPTRACE // DEEPFAKE DETECTION',
       category: 'Computer Vision & Forensics',
-      tags: ['PyTorch', 'OpenCV', 'FFT', 'CNN'],
-      date: '2026.03',
+      tags: ['Python', 'PyTorch', 'OpenCV', 'DFDC Dataset', 'Colab'],
+      date: '2026.02',
       description:
-        'Multi-model deepfake detection pipeline using spatial artifacts and frequency-domain analysis.',
+        'Deep learning pipeline for detecting deepfake videos: Deepfake Detection Challenge (DFDC) sample dataset, OpenCV frame extraction, and PyTorch CNN training/evaluation — implemented as a reproducible Colab notebook.',
     },
     {
       id: 'smart-ppe-detection',

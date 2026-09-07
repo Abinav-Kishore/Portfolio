@@ -81,6 +81,15 @@ export default function App() {
     handleNavigate('hero');
   };
 
+  // Freeze background smooth-scroll while the project dossier modal is open
+  useEffect(() => {
+    if (modalProject) {
+      lenisRef.current?.stop();
+    } else {
+      lenisRef.current?.start();
+    }
+  }, [modalProject]);
+
   return (
     <div className={`relative min-h-screen transition-colors duration-700 ${isDark ? 'bg-[#0D0D0C]' : 'bg-[#EAE6DC]'}`}>
       {/* Custom Inertial Cursor */}
@@ -102,7 +111,7 @@ export default function App() {
         <Hero setCursorMode={handleSetCursor} />
 
         {/* Work Scene Anchor */}
-        <div id="work" className="w-full">
+        <div className="w-full">
           {/* Project 01: Monolith OS (Spatial Architecture on Paper) */}
           <ProjectScene1
             onOpenModal={(proj) => setModalProject(proj)}
