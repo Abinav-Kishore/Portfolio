@@ -203,10 +203,14 @@ html.lenis body {
 /* Custom cursor hover state rules: hide default cursor on desktop with mouse */
 @media (pointer: fine) {
   body.custom-cursor-active,
-  body.custom-cursor-active a,
-  body.custom-cursor-active button,
-  body.custom-cursor-active [role="button"] {
+  body.custom-cursor-active * {
     cursor: none !important;
+  }
+
+  body.custom-cursor-active input[type="text"],
+  body.custom-cursor-active input[type="email"],
+  body.custom-cursor-active textarea {
+    cursor: text !important;
   }
 }
 

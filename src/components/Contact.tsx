@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowUpRight,
   Copy,
@@ -14,18 +16,41 @@ import {
 import { audioEngine } from "./AudioEngine";
 import { PORTFOLIO_DATA } from "../data";
 
+gsap.registerPlugin(ScrollTrigger);
+
 interface ContactProps {
   setCursorMode: (mode: string, text?: string) => void;
   onBackToTop: () => void;
+  setIsDark?: (dark: boolean) => void;
 }
 
 export const Contact: React.FC<ContactProps> = ({
   setCursorMode,
   onBackToTop,
+  setIsDark,
 }) => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
   const email = PORTFOLIO_DATA.identity.email;
   const phone = PORTFOLIO_DATA.identity.phone;
+
+  useEffect(() => {
+    if (!setIsDark) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: "top 50%",
+      end: "bottom bottom",
+      onEnter: () => setIsDark(true),
+      onEnterBack: () => setIsDark(true),
+      onLeave: () => setIsDark(false),
+      onLeaveBack: () => setIsDark(false),
+    });
+
+    return () => st.kill();
+  }, [setIsDark]);
 
   const handleCopy = () => {
     audioEngine.playClick(1500);
@@ -36,6 +61,7 @@ export const Contact: React.FC<ContactProps> = ({
 
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="relative w-full min-h-screen py-32 px-6 sm:px-12 md:px-16 bg-[#0D0D0C] text-[#EAE6DC] flex flex-col justify-between border-t border-white/10 transition-colors duration-700"
     >

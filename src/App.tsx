@@ -93,7 +93,7 @@ export default function App() {
   return (
     <div className={`relative min-h-screen transition-colors duration-700 ${isDark ? 'bg-[#0D0D0C]' : 'bg-[#EAE6DC]'}`}>
       {/* Custom Inertial Cursor */}
-      <Cursor cursorMode={cursorMode} cursorText={cursorText} />
+      <Cursor dark={isDark} cursorMode={cursorMode} cursorText={cursorText} />
 
       {/* Persistent Architectural Parallax Grid */}
       <Grid dark={isDark} />
@@ -142,6 +142,7 @@ export default function App() {
         <Contact
           setCursorMode={handleSetCursor}
           onBackToTop={handleBackToTop}
+          setIsDark={setIsDark}
         />
       </main>
 
